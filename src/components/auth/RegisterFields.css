@@ -1,0 +1,10 @@
+.react-tel-input .form-control {
+  width: 100% !important;
+  background-color: #f1f3f5;
+  border: 0;
+}
+.react-tel-input .flag-dropdown {
+  background-color: #f1f3f5;
+  border: 0;
+  border-radius: 3px 0 0 3px;
+}
