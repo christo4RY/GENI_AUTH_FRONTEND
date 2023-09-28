@@ -1,0 +1,15 @@
+.swiper {
+  width: 70%;
+  position: unset;
+  height: 12rem;
+}
+
+.swiper-button-prev {
+  left: 3rem;
+  color: #051e34;
+}
+
+.swiper-button-next {
+  right: 3rem;
+  color: #051e34;
+}

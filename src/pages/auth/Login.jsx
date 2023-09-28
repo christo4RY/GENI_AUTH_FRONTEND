@@ -1,8 +1,9 @@
 import { Checkbox, PasswordInput, TextInput, rem } from "@mantine/core";
 import React from "react";
 import { IconAt, IconLock, IconUser } from "@tabler/icons-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "@mantine/form";
+import { useGetUserMutation } from "../../features/api/apiSlices/AuthApi";
 
 const Login = () => {
   const icon = <IconAt style={{ width: rem(16), height: rem(16) }} />;
@@ -18,6 +19,12 @@ const Login = () => {
         value.length < 6 ? "Password must have at least 6 letters" : null,
     },
   });
+  const [getUser, { isLoading }] = useGetUserMutation()
+  const nav = useNavigate()
+  const login = async (data) => {
+    // const response = await getUser(data)
+    nav('/verify')
+  }
   return (
     <div className="h-screen flex flex-col md:flex-row">
       <div className="w-full md:w-[50%] h-full bg-[#053B50]">
@@ -35,7 +42,7 @@ const Login = () => {
             </div>
             <form
               className="space-y-5 w-full"
-              onSubmit={form.onSubmit(console.log)}
+              onSubmit={form.onSubmit(login)}
             >
               <div>
                 <TextInput
