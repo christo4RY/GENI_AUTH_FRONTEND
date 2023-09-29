@@ -1,10 +1,13 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   return (
-    <div>
-        <h1 className='text-2xl text-teal-500 font-bold'>App</h1>
-    </div>
+    <>
+      <Outlet />
+      <ToastContainer />
+    </>
   )
 }
 

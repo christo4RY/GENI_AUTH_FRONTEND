@@ -1,5 +1,5 @@
 import { MainApi } from "../MainApi";
-import { LOGIN_URL, REGISTER_URL } from "../constant/URLS"
+import { LOGIN_URL, REGISTER_URL, VERIFYCODE_URL } from "../constant/URLS"
 
 
 export const AuthApi = MainApi.injectEndpoints({
@@ -14,13 +14,21 @@ export const AuthApi = MainApi.injectEndpoints({
         }),
         getUser: builder.mutation({
             query: (data) => ({
-                url: 'login',
+                url: LOGIN_URL,
                 method: "POST",
                 body: data
             }),
             invalidatesTags: ['Auth']
         }),
+        userVerifyCode:builder.mutation({
+            query: (data) => ({
+                url: VERIFYCODE_URL,
+                method: "POST",
+                body: data
+            }),
+            invalidatesTags: ['Auth']
+        })
     })
 })
 
-export const { useSetUserMutation,useGetUserMutation,useLogoutUserMutation} = AuthApi
+export const { useSetUserMutation,useGetUserMutation,useUserVerifyCodeMutation} = AuthApi

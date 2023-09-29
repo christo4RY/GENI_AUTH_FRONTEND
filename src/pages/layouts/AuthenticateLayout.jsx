@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import Sidebar from './partials/Sidebar'
 import Navbar from './partials/Navbar'
 
 const AuthenticateLayout = () => {
+    
     return (
         <div className='flex'>
             <Sidebar />

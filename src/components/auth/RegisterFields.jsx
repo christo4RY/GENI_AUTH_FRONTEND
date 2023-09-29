@@ -16,6 +16,7 @@ import {
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 import { useSetUserMutation } from "../../features/api/apiSlices/AuthApi";
 import { useNavigate } from "react-router-dom";
+import { setCredentials } from "../../features/slices/auth/authTokenSlice";
 
 const RegisterFields = () => {
   const { activeStep } = useSelector((state) => state.authstep);
@@ -87,12 +88,12 @@ const RegisterFields = () => {
   const [setUser, { isLoading }] = useSetUserMutation()
   const nav = useNavigate()
   const registerUser = async (data) => {
-    // const response = await setUser(data)
-    // console.log(response)
-    nav('/verify')
-
+    const {data:response} = await setUser(data)
+    if (response?.data?.token) {
+      dispatch(setCredentials({ id:response.data.id ,token: response.data.token }))
+      nav('/verify')
+    }
   }
-
   const fields = [
     <div className=" grid grid-cols-2 gap-5">
 

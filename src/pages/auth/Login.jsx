@@ -4,6 +4,9 @@ import { IconAt, IconLock, IconUser } from "@tabler/icons-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "@mantine/form";
 import { useGetUserMutation } from "../../features/api/apiSlices/AuthApi";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "../../features/slices/auth/authTokenSlice";
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const icon = <IconAt style={{ width: rem(16), height: rem(16) }} />;
@@ -21,9 +24,16 @@ const Login = () => {
   });
   const [getUser, { isLoading }] = useGetUserMutation()
   const nav = useNavigate()
+  const dispatch = useDispatch()
   const login = async (data) => {
-    // const response = await getUser(data)
-    nav('/verify')
+    const { data:res } = await getUser(data)
+    if (res?.data) {
+      toast.success(res.data.message)
+      dispatch(setCredentials({ id: res.data.id, token: res.data.token }))
+      nav('/verify')
+    }else{
+      toast.error("Something wrong!")
+    }
   }
   return (
     <div className="h-screen flex flex-col md:flex-row">
@@ -69,7 +79,7 @@ const Login = () => {
                   <Checkbox defaultChecked label="I agree to sell my privacy" />
                 </div>
                 <div className="text-sm md:text-base">
-                  <Link className=" text-blue-600" to="register">
+                  <Link className=" text-blue-600" to="/register">
                     Already a member?
                   </Link>
                 </div>

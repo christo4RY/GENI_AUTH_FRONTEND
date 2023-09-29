@@ -7,6 +7,8 @@ import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
 import { Provider } from "react-redux";
 import { store } from "./features/store/store";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
