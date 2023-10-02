@@ -30,7 +30,7 @@ const Login = () => {
     if (res?.data) {
       toast.success(res.data.message)
       dispatch(setCredentials({ id: res.data.id, token: res.data.token }))
-      nav('/verify')
+      nav('/admin/products')
     }else{
       toast.error("Something wrong!")
     }

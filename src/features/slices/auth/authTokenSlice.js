@@ -1,10 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import Cookies from "js-cookie";
 
 const initialState = {
-  id: localStorage.getItem("id") ?? null,
-  token: localStorage.getItem("token")
-    ? JSON.parse(localStorage.getItem("token"))
-    : null,
+  id: Cookies.get("id") ?? null,
+  token: Cookies.get("id") ? JSON.parse(Cookies.get("id")) : null,
 };
 
 export const authTokenSlice = createSlice({
@@ -14,8 +13,10 @@ export const authTokenSlice = createSlice({
     setCredentials: (state, { payload: { id, token } }) => {
       state.token = token;
       state.id = id;
-      localStorage.setItem("id", id);
-      localStorage.setItem("token", JSON.stringify(token));
+      Cookies.set("id", id, { expires: 1 });
+      Cookies.set("token", JSON.stringify(token), {
+        expires: 1,
+      });
     },
   },
 });

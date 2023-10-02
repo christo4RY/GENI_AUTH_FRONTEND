@@ -1,6 +1,6 @@
 const BASE_URL = "http://localhost:8000";
-const REGISTER_URL = "/api/v1/register";
-const LOGIN_URL = "/api/v1/login";
+const REGISTER_URL = "/register";
+const LOGIN_URL = "/login";
 const PRODUCTS_URL = "/api/products";
 const VERIFYCODE_URL = "/api/v1/email-verify";
 
