@@ -7,7 +7,7 @@ import App from "../pages/App";
 import Register from "../pages/auth/Register";
 import Login from "../pages/auth/Login";
 import AuthenticateLayout from "../pages/layouts/AuthenticateLayout";
-import Products from "../pages/products/Products";
+import Projects from "../pages/projects/Projects";
 import AuthVerify from "../pages/auth/AuthVerify";
 import AuthCode from "../pages/authcodes/AuthCode";
 import RouteAuthGuard from "../components/auth/Guard/RouteAuthGuard";
@@ -30,7 +30,7 @@ const routes = createBrowserRouter(
         <Route path="/admin" element={<RouteAuthGuard>
           <AuthenticateLayout />
         </RouteAuthGuard>}>
-          <Route path="products" element={<Products />} />
+          <Route path="projects" element={<Projects />} />
           <Route path="auth-code" element={<AuthCode />} />
         </Route>
       </Route>

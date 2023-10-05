@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/navigation';
 import 'swiper/css';
-import "./Products.css"
+import "./Projects.css"
+import { useGetProjectsQuery } from '../../features/api/apiSlices/ProjectApi';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 
 const ProductsData = [
@@ -28,7 +31,23 @@ const ProductsData = [
     img:'https://esign.lumin.institute/images/home/securesign.png'
   },
   ]
-const Products = () => {
+const Projects = () => {
+  const {id,token}  = useSelector(state=>state.authToken)
+  const {data,isLoading} = useGetProjectsQuery(token);
+  console.log(data)
+
+  // const getProjects = async()=>{
+  //   const data = await axios.get('http://127.0.0.1:8000/api/projects',{
+  //     headers: {
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   })
+  // }
+
+  // useEffect(()=>{
+  //   getProjects()
+  // },[])
+
   return (
     <div className='w-full'>
       <h1 className='text-2xl font-bold'>Products</h1>
@@ -61,4 +80,4 @@ const Products = () => {
   )
 }
 
-export default Products
+export default Projects

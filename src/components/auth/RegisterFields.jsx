@@ -91,7 +91,7 @@ const RegisterFields = () => {
     const {data:response} = await setUser(data)
     if (response?.data?.token) {
       dispatch(setCredentials({ id:response.data.id ,token: response.data.token }))
-      nav('/admin/products')
+      nav('/admin/projects')
     }
   }
   const fields = [

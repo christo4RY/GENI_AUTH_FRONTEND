@@ -1,4 +1,4 @@
-import { Checkbox, PasswordInput, TextInput, rem } from "@mantine/core";
+import { Checkbox, PasswordInput,Loader, TextInput, rem } from "@mantine/core";
 import React from "react";
 import { IconAt, IconLock, IconUser } from "@tabler/icons-react";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ import { useGetUserMutation } from "../../features/api/apiSlices/AuthApi";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "../../features/slices/auth/authTokenSlice";
 import { toast } from 'react-toastify';
+
 
 const Login = () => {
   const icon = <IconAt style={{ width: rem(16), height: rem(16) }} />;
@@ -30,7 +31,7 @@ const Login = () => {
     if (res?.data) {
       toast.success(res.data.message)
       dispatch(setCredentials({ id: res.data.id, token: res.data.token }))
-      nav('/admin/products')
+      nav('/admin/projects')
     }else{
       toast.error("Something wrong!")
     }
@@ -41,6 +42,7 @@ const Login = () => {
         <img src="/login.jpg" className="w-full h-full object-cover" alt="" />
       </div>
       <div className="w-full md:w-[50%] flex items-center">
+      
         <div className="w-full">
           <div className="w-full md:w-[70%] mx-auto p-8 md:p-10">
             <div className="mb-10 w-full space-y-5">
@@ -85,8 +87,8 @@ const Login = () => {
                 </div>
               </div>
               <div className="flex justify-center">
-                <button className=" bg-blue-500 py-1.5 rounded-full  px-4 w-[80%]  text-white">
-                  Login
+                <button disabled={isLoading} className=" bg-blue-500 py-1.5 rounded-full  px-4 w-[80%]  text-white">
+                { isLoading ?  <Loader size={30} color="dark" />: 'Login' }
                 </button>
               </div>
             </form>
