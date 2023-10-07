@@ -5,71 +5,37 @@ import 'swiper/css/navigation';
 import 'swiper/css';
 import "./Projects.css"
 import { useGetProjectsQuery } from '../../features/api/apiSlices/ProjectApi';
-import { useSelector } from 'react-redux';
-import axios from 'axios';
 
-
-const ProductsData = [
-  {
-    name: "GENI Technology",
-    detail: "GENI Technology",
-    img:'https://geni.technology/wp-content/uploads/2022/11/Full_logo_Color-1.svg'
-  },
-  {
-    name: "C4RD MYANMAR",
-    detail: "C4RD MYANMAR",
-    img: 'https://c4rdmyanmar.org/images/logo/C4rdMyanmar_Horizontal_Logo_RGB_Full_Color_High_Res.png',
-  },
-  {
-    name: "Made Myanmar",
-    detail: "Made Myanmar",
-    img: 'https://mademyanmar.com/public/uploads/all/J2M0dVzFYxdp7G6l9QPRIFyZQJkcfArG5QbQO4wY.png',
-  },
-  {
-    name: "Esign",
-    detail: "Esign",
-    img:'https://esign.lumin.institute/images/home/securesign.png'
-  },
-  ]
 const Projects = () => {
-  const {id,token}  = useSelector(state=>state.authToken)
-  const {data,isLoading} = useGetProjectsQuery(token);
-  console.log(data)
-
-  // const getProjects = async()=>{
-  //   const data = await axios.get('http://127.0.0.1:8000/api/projects',{
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   })
-  // }
-
-  // useEffect(()=>{
-  //   getProjects()
-  // },[])
-
+  const { data: projects, isLoading } = useGetProjectsQuery();
   return (
     <div className='w-full'>
       <h1 className='text-2xl font-bold'>Products</h1>
       <div className="relative mt-10">
+        {
+          isLoading && (<h1>isLoading</h1>)
+        }
         <Swiper
           modules={[Navigation]}
           spaceBetween={40}
           slidesPerView={3}
           navigation
         >
-          {ProductsData?.map((product, index) => {
+          {projects?.map((project, index) => {
+            console.log(project)
             return (
               <SwiperSlide key={index}>
-                <div className="p-4 h-40 bg-white flex rounded-lg relative overflow-hidden">
-                  <div>
-                    <h1 className=" text-xl font-semibold">{product.name}</h1>
-                    <p className=" text-xs">{product.detail}</p>
+                <a href={project.project_url}>
+                  <div className="p-4 h-40 bg-white flex rounded-lg relative overflow-hidden">
+                    <div>
+                      <h1 className=" text-xl font-semibold">{project.project_name}</h1>
+                      <p className=" text-xs">{project.project_name}</p>
+                    </div>
+                    <div className=" absolute bottom-10 h-20 flex mt-2 items-center justify-center w-full right-1  -rotate-[10deg]">
+                      <img src={project.project_logo} className="w-[10rem] " alt="" />
+                    </div>
                   </div>
-                  <div className=" absolute bottom-10 h-20 flex mt-2 items-center justify-center w-full right-1  -rotate-[10deg]">
-                    <img src={product.img} className="w-[10rem] " alt="" />
-                  </div>
-                </div>
+                </a>
               </SwiperSlide>
             );
           })}

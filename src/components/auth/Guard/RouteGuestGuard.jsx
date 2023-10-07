@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom'
 const RouteGuestGuard = ({ children }) => {
     const { token } = useSelector((state) => state.authToken)
     if (token) {
-        return <Navigate to="/admin/products"/>
+        return <Navigate to="/admin/projects"/>
     }else{
         return children
     }
