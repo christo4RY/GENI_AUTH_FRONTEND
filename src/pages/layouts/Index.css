@@ -1,0 +1,36 @@
+.futures:hover .futures-icon {
+  background-color: black;
+  color: white;
+}
+.hero {
+  background: linear-gradient(#a068fa, #327bd1);
+  border-bottom-right-radius: 50% 20%;
+  border-bottom-left-radius: 50% 20%;
+}
+.hero1 {
+  height: 250px;
+  top: 20%;
+  position: absolute;
+  width: 250px;
+  left: 65%;
+  background: #ffbc5058;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+.hero2 {
+  height: 250px;
+  top: 10%;
+  position: absolute;
+  width: 250px;
+  left: 15%;
+  background: #ffbc5058;
+  border-radius: 30% 70% 0% 100% / 0% 95% 5% 100%;
+}
+.hero3 {
+  height: 250px;
+  top: 60%;
+  position: absolute;
+  width: 250px;
+  left: 35%;
+  background: #ffbc5058;
+  border-radius: 61% 39% 48% 52% / 0% 50% 50% 100%;
+}

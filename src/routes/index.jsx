@@ -12,11 +12,13 @@ import AuthVerify from "../pages/auth/AuthVerify";
 import AuthCode from "../pages/authcodes/AuthCode";
 import RouteAuthGuard from "../components/auth/Guard/RouteAuthGuard";
 import RouteGuestGuard from "../components/auth/Guard/RouteGuestGuard";
+import Index from "../pages/layouts/Index";
 
 const routes = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path="/" element={<App />} >
+        <Route index element={<Index/>}/>
         <Route path="/register" element={<RouteGuestGuard>
           <Register />
         </RouteGuestGuard>} />

@@ -4,10 +4,10 @@ import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   return (
-    <>
+    <div className='w-full'>
       <Outlet />
       <ToastContainer />
-    </>
+    </div>
   )
 }
 
