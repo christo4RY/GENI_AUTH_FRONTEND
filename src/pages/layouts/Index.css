@@ -4,10 +4,37 @@
 }
 .hero {
   background: linear-gradient(#a068fa, #327bd1);
-  border-bottom-right-radius: 50% 20%;
-  border-bottom-left-radius: 50% 20%;
+  /* border-bottom-right-radius: 50% 20%; */
+  /* border-bottom-left-radius: 50% 20%; */
 }
-.hero1 {
+.curve {
+  position: absolute;
+  height: 225px;
+  width: 100%;
+  bottom: 0;
+}
+.curve::before {
+  content: "";
+  display: block;
+  width: 50%;
+  position: absolute;
+  height: 100%;
+  background-color: white;
+  border-radius: 100% 50%;
+  transform: translate(85%, 60%);
+}
+.curve::after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 100% 50%;
+  width: 55%;
+  height: 100%;
+  background-color: white;
+  transform: translate(-4%, 40%);
+  z-index: -1;
+}
+/* .hero1 {
   height: 250px;
   top: 20%;
   position: absolute;
@@ -24,8 +51,8 @@
   left: 15%;
   background: #ffbc5058;
   border-radius: 30% 70% 0% 100% / 0% 95% 5% 100%;
-}
-.hero3 {
+} */
+/* .hero3 {
   height: 250px;
   top: 60%;
   position: absolute;
@@ -33,4 +60,116 @@
   left: 35%;
   background: #ffbc5058;
   border-radius: 61% 39% 48% 52% / 0% 50% 50% 100%;
+} */
+
+.hero4 {
+  height: 400px;
+  top: 20%;
+  position: absolute;
+  width: 400px;
+  left: 60%;
 }
+.hero5 {
+  height: 400px;
+  top: 55%;
+  position: absolute;
+  width: 400px;
+  left: 30%;
+}
+.hero6 {
+  height: 400px;
+  top: 10%;
+  position: absolute;
+  width: 400px;
+  left: 15%;
+}
+
+.custom-shape {
+  position: absolute;
+  bottom: -9rem;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape svg {
+  position: relative;
+  display: block;
+  width: calc(300% + 1.3px);
+  height: 169px;
+}
+
+.custom-shape .shape-fill {
+  fill: #4178d7;
+}
+
+/* @media only screen and (max-width: 650px) {
+  .hero4,
+  .hero5,
+  .hero6 {
+    height: 270px;
+    width: 270px;
+  }
+} */
+
+@media only screen and (max-width: 500px) {
+  .hero4,
+  .hero5,
+  .hero6 {
+    height: 200px;
+    width: 200px;
+  }
+
+  .hero6 {
+    top: 10%;
+    left: 7%;
+  }
+  .hero4 {
+    top: 20%;
+    left: 50%;
+  }
+  .hero5 {
+    top: 55%;
+    left: 30%;
+  }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 768px) {
+  .hero4,
+  .hero5,
+  .hero6 {
+    height: 300px;
+    width: 300px;
+  }
+
+  .hero6 {
+    top: 10%;
+    left: 7%;
+  }
+  .hero4 {
+    top: 20%;
+    left: 50%;
+  }
+  .hero5 {
+    top: 55%;
+    left: 30%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 996px) {
+  .hero4,
+  .hero5,
+  .hero6 {
+    height: 400px;
+    width: 400px;
+  }
+}
+/* @media only screen and (max-width: 720px) {
+  .hero4,
+  .hero5,
+  .hero6 {
+    height: 200px;
+    width: 200px;
+  }
+} */
