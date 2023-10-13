@@ -21,8 +21,10 @@ const Header = () => {
 
     return (
         <div className={`flex fixed transition-colors z-[999] top-0 left-0 h-16 py-9 border-b border-[#ffffff33] ${scroll ? 'bg-white' : 'bg-transparent'} w-full items-center px-7 justify-between`}>
-            <div >
-                <img src="https://magicai.liquid-themes.com/upload/images/logo/TLqO--magicai-logo.svg" alt="" />
+            <div className='flex items-center space-x-2'>
+                {/* <img src="https://magicai.liquid-themes.com/upload/images/logo/TLqO--magicai-logo.svg" alt="" /> */}
+                <img src="/images/geni-esign-removebg-120x120.png" className='w-10' alt="" />
+                <h1 className={`text-xl tracking-wider font-bold ${scroll ? 'text-slate-900' : 'text-white '}`}>GENI</h1>
             </div>
             <div className='flex lg:space-x-14 xl:space-x-24'>
                 <ul className=' hidden lg:flex lg:space-x-2 xl:space-x-7 items-center'>

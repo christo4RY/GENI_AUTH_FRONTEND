@@ -13,7 +13,7 @@ import AuthCode from "../pages/authcodes/AuthCode";
 import RouteAuthGuard from "../components/auth/Guard/RouteAuthGuard";
 import RouteGuestGuard from "../components/auth/Guard/RouteGuestGuard";
 import Index from "../pages/layouts/Index";
-import Test from "../pages/layouts/Test";
+import AuthIndex from "../pages/layouts/AuthIndex";
 
 const routes = createBrowserRouter(
   createRoutesFromElements(
@@ -36,7 +36,7 @@ const routes = createBrowserRouter(
           <Route path="projects" element={<Projects />} />
           <Route path="auth-code" element={<AuthCode />} />
         </Route>
-        <Route path="/test" element={<Test/>}/>
+        {/* <Route path="/test" element={<AuthIndex/>}/> */}
       </Route>
     </Route>
   )

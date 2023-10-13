@@ -1,19 +1,23 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
-import Sidebar from './partials/Sidebar'
-import Navbar from './partials/Navbar'
+import Navbar from './admin/partials/Navbar';
+import Sidebar from './admin/partials/Sidebar';
 
 const AuthenticateLayout = () => {
-    
+    const [sider, setSider] = useState(false)
+    const [openSider, setOpneSider] = useState(false)
+    const toggleMenu = () => {
+        setSider(sider => !sider);
+    }
+    const toggleSider = () => {
+        setOpneSider(open => !open);
+    }
     return (
-        <div className='flex'>
-            <Sidebar />
-            <div className='w-full relative'>
-                <Navbar />
-                <div className=' bg-slate-100 h-full md:pt-20 p-5'>
-                    <Outlet />
-                </div>
-            </div>
+        <div className='main-layout '>
+            <Sidebar sider={sider} toggleMenu={toggleMenu} />
+            <Navbar sider={sider} openSider={openSider} toggleSider={toggleSider}>
+                <Outlet />
+            </Navbar>
         </div>
     )
 }

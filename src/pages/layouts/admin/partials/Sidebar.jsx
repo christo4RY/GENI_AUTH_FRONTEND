@@ -1,35 +1,65 @@
 import React from 'react'
-import { Menu, rem } from '@mantine/core';
-import {
-    IconSettings,
-} from '@tabler/icons-react';
-
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
+import { Link } from 'react-router-dom'
 import { RxDashboard } from "react-icons/rx"
+import { AiOutlineProject } from "react-icons/ai"
+import { MdKeyboardArrowDown, MdKeyboardArrowLeft } from "react-icons/md";
+import { showSubMenu, sidebarToggle } from '../../../../utilities/sidebar';
+const Sidebar = () => {
 
-const Sidebar = ({ sider, toggleMenu }) => {
     return (
-        <div className={` ${sider ? 'w-[7%]' : 'w-[20%]'} dark:bg-[#1A1D23] dark:text-gray-100  hidden md:block transition-all duration-300 fixed left-0 top-0 z-50 bg-white h-full border-r dark:border-slate-700 `}>
-            <div className='px-7 py-6'>
-                <img className={`${sider ? 'hidden' : 'flex'}`} src="https://magicai.liquid-themes.com/upload/images/logo/8r9f-dashboard-magicai-logo.svg" alt="" />
-                <img className={`${sider ? 'flex' : 'hidden'}`} src="https://magicai.liquid-themes.com/upload/images/logo/rYby-collapsed-magicai-logo.svg" alt="" />
+        <div className={`w-0 md:w-[22%] lg:w-[18%] xl:w-[16%] sidebar `}>
+            <div className='flex items-center space-x-2'>
+                <img src="/images/geni-esign-removebg-120x120.png" className='w-9 md:w-10' alt="" />
+                <h1 className='sidebar-brand'> GENI</h1>
             </div>
-            <div className='px-4 flex flex-col  '>
-                <Menu shadow="md">
-                    <Menu.Label className=' uppercase mb-1'>User</Menu.Label>
-                    <Menu.Item className='  hover:bg-slate-100 text-center  mb-2' leftSection={<RxDashboard className='text-slate-500 dark:hover:text-indigo-600' style={{ width: rem(22), height: rem(22) }} />}>
-                        <span className={` transition-all ${sider ? 'hidden' : 'block'}`}> <span className='text-slate-500'>Dashboard</span></span>
-                    </Menu.Item>
-                    <Menu.Item className=' hover:bg-slate-100 text-center   mb-2' leftSection={<IconSettings className='text-slate-500' style={{ width: rem(22), height: rem(22) }} />}>
-                        <span className={` transition-all ${sider ? 'hidden' : 'block'}`}> <span className='text-slate-500'>Setting</span></span>
-                    </Menu.Item>
-
-                </Menu>
+            <div onClick={sidebarToggle} className=' absolute top-5 cursor-pointer -right-3'>
+                <MdKeyboardArrowLeft className='close-sidebar ' />
             </div>
-            <div onClick={toggleMenu} className=' absolute top-6 cursor-pointer -right-3'>
-                <IoIosArrowBack className={`text-xl w-7 h-7 border rounded-full dark:bg-slate-900 dark:border-slate-700 p-1 bg-slate-200 ${sider ? 'hidden' : 'flex'}`} />
-                <IoIosArrowForward className={`text-xl w-7 h-7 border rounded-full dark:bg-slate-900 dark:border-slate-700 p-1 bg-slate-200 ${sider ? 'flex' : 'hidden'}`} />
-            </div>
+            <ul className='sidebar-menu'>
+                <li className='sidebar-link '>
+                    <h5 className=' sidebar-lable'>user</h5>
+                </li>
+                <li className='sidebar-link'>
+                    <Link to='#' className='sidebar-link-item'>
+                        <RxDashboard className='sidebar-link-icon' />
+                        <h5>Dashboard</h5>
+                    </Link>
+                </li>
+                <li className='sidebar-link'>
+                    <div className='sidebar-submenu' onClick={showSubMenu}>
+                        <div className='sidebar-link-item'>
+                            <AiOutlineProject className='sidebar-link-icon' />
+                            <h5>Project</h5>
+                        </div>
+                        <MdKeyboardArrowDown className=' sidebar-link-item-icon' />
+                    </div>
+                    <ul className='sidebar-submenu-link'>
+                        <li className='sidebar-submenu-link-item'>
+                            <Link to="#" className='w-full'>Projects</Link>
+                        </li>
+                        <li className='sidebar-submenu-link-item'>
+                            <Link to="#" className='w-full'>Codes</Link>
+                        </li>
+                        <li className='sidebar-submenu-link-item'>
+                            <Link to="#" className='w-full'>Settings</Link>
+                        </li>
+                    </ul>
+                </li>
+                <li className='sidebar-link'>
+                    <div className='sidebar-submenu' onClick={showSubMenu}>
+                        <div className='sidebar-link-item'>
+                            <AiOutlineProject className='sidebar-link-icon' />
+                            <h5>Setting</h5>
+                        </div>
+                        <MdKeyboardArrowDown className=' sidebar-link-item-icon' />
+                    </div>
+                    <ul className='sidebar-submenu-link'>
+                        <li className='sidebar-submenu-link-item'>
+                            <Link to="#" className='w-full'>Settings</Link>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     )
 }

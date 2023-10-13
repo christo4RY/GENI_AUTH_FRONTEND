@@ -10,7 +10,8 @@ const Projects = () => {
   const { data: projects, isLoading } = useGetProjectsQuery();
   return (
     <div className='w-full'>
-      <h1 className='text-2xl font-bold'>Products</h1>
+      <h4 className=' font-light text-sm text-slate-500'>Dashboard</h4>
+      <h1 className='text-2xl md:text-3xl font-bold dark:text-slate-100'>Products</h1>
       <div className="relative mt-10">
         {
           isLoading && (<h1>isLoading</h1>)
@@ -26,7 +27,7 @@ const Projects = () => {
             return (
               <SwiperSlide key={index}>
                 <a href={project.project_url}>
-                  <div className="p-4 h-40 bg-white flex rounded-lg relative overflow-hidden">
+                  <div className="p-4 h-40 bg-white dark:bg-[#1A1D23] dark:border-slate-700 dark:text-slate-100 dark:border flex rounded-lg relative overflow-hidden">
                     <div>
                       <h1 className=" text-xl font-semibold">{project.project_name}</h1>
                       <p className=" text-xs">{project.project_name}</p>
