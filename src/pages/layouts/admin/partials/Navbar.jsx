@@ -79,16 +79,16 @@ const Navbar = ({ sider, toggleSider, openSider, children }) => {
                                     </button>
                                 </Menu.Target>
 
-                                <Menu.Dropdown >
+                                <Menu.Dropdown  className='dark:bg-[#1A1D23] dark:border-slate-700 dark:text-slate-100'>
                                     <div className='px-3 py-2 space-y-1'>
-                                        <h1 className=' text-slate-500 text-sm'>Admin</h1>
-                                        <h4 className=' text-slate-500 text-sm'>admin@gmail.com</h4>
+                                        <h1 className=' text-slate-500 dark:text-slate-100 text-sm'>Admin</h1>
+                                        <h4 className=' text-slate-500 dark:text-slate-100 text-sm'>admin@gmail.com</h4>
                                     </div>
                                     <Menu.Divider />
-                                    <Menu.Item leftSection={<IconSettings style={{ width: rem(16), height: rem(16) }} />}>
+                                    <Menu.Item className='dark:text-slate-100' leftSection={<IconSettings style={{ width: rem(16), height: rem(16) }} />}>
                                         Setting
                                     </Menu.Item>
-                                    <Menu.Item leftSection={<IconLogout style={{ width: rem(16), height: rem(16) }} />}>
+                                    <Menu.Item className='dark:text-slate-100' leftSection={<IconLogout style={{ width: rem(16), height: rem(16) }} />}>
                                         Logout
                                     </Menu.Item>
                                 </Menu.Dropdown>
