@@ -88,9 +88,9 @@ const RegisterFields = () => {
   const [setUser, { isLoading }] = useSetUserMutation()
   const nav = useNavigate()
   const registerUser = async (data) => {
-    const {data:response} = await setUser(data)
+    const { data: response } = await setUser(data)
     if (response?.data?.token) {
-      dispatch(setCredentials({ id:response.data.id ,token: response.data.token }))
+      dispatch(setCredentials({ id: response.data.id, token: response.data.token }))
       nav('/admin/projects')
     }
   }

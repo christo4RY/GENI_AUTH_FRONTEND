@@ -1,5 +1,5 @@
 import { MainApi } from "../MainApi";
-import { LOGIN_URL, LOGOUT_URL, REGISTER_URL, VERIFYCODE_URL } from "../constant/URLS"
+import { FORGOTPWD_URL, LOGIN_URL, LOGOUT_URL, REGISTER_URL, RESETPWD_URL, VERIFYCODE_URL } from "../constant/URLS"
 
 
 export const AuthApi = MainApi.injectEndpoints({
@@ -21,10 +21,9 @@ export const AuthApi = MainApi.injectEndpoints({
             invalidatesTags: ['Auth']
         }),
         logoutUser: builder.mutation({
-            query: (data) => ({
+            query: () => ({
                 url: LOGOUT_URL,
                 method: "POST",
-                body: data
             }),
             invalidatesTags: ['Auth']
         }),
@@ -35,8 +34,23 @@ export const AuthApi = MainApi.injectEndpoints({
                 body: data
             }),
             invalidatesTags: ['Auth']
+        }),
+        forgotPassword:builder.mutation({
+            query:(data)=>({
+                url:FORGOTPWD_URL,
+                method:"POST",
+                body:data
+            }),
+            invalidatesTags: ['Auth']
+        }),
+        resetPassword:builder.mutation({
+            query:(data)=>({
+                url:RESETPWD_URL,
+                method:'POST',
+                body:data
+            })
         })
     })
 })
 
-export const { useSetUserMutation,useGetUserMutation,useLogoutUserMutation,useUserVerifyCodeMutation} = AuthApi
+export const { useSetUserMutation,useGetUserMutation,useLogoutUserMutation,useUserVerifyCodeMutation,useForgotPasswordMutation,useResetPasswordMutation} = AuthApi

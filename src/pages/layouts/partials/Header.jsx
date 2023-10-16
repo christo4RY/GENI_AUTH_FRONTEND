@@ -36,10 +36,10 @@ const Header = () => {
                     <li >
                         <Link to='/' className={`py-2 px-3.5 rounded-lg ${scroll ? ' hover:bg-[#57575723]' : 'text-white hover:bg-[#ffffff23]'} `}>
 
-                            Features
+                            Projects
                         </Link>
                     </li>
-                    <li >
+                    {/* <li >
                         <Link to='/' className={`py-2 px-3.5 rounded-lg ${scroll ? ' hover:bg-[#57575723]' : 'text-white hover:bg-[#ffffff23]'} `}>
 
                             How it Works
@@ -59,7 +59,7 @@ const Header = () => {
                         <Link to='/' className={`py-2 px-3.5 rounded-lg ${scroll ? ' hover:bg-[#57575723]' : 'text-white hover:bg-[#ffffff23]'} `}>
                             FAQ
                         </Link>
-                    </li>
+                    </li> */}
                 </ul>
                 <div className='flex space-x-5'>
                     <div className={`hidden cursor-pointer  border sm:flex items-center ${scroll ? '' : 'border-[#ffffffb2] hover:bg-white '} p-1 md:p-1.5 justify-center rounded-full`}>
@@ -104,7 +104,7 @@ const Header = () => {
                     </ul>
                 </div>
             </div>
-            <div className={`  w-full bg-[#343C57] transition-all duration-300 z-10 left-0 top-0 ${menu ? 'block lg:hidden translate-y-[25%] ' : 'hidden -translate-y-full'} absolute `}>
+            <div className={`  w-full bg-[#343C57] transition-all duration-300 z-10 left-0 top-0 ${menu ? 'block lg:hidden translate-y-[57%] ' : 'hidden -translate-y-full'} absolute `}>
                 <ul className='p-6 py-8 space-y-4'>
                     <li >
                         <Link to='/' className={`py-2 px-3.5 rounded-lg ${scroll ? ' bg-[#57575723]' : 'text-white bg-[#ffffff23]'} `}>
@@ -114,10 +114,10 @@ const Header = () => {
                     <li >
                         <Link to='/' className={`py-2 px-3.5 rounded-lg ${scroll ? ' hover:bg-[#57575723]' : 'text-white hover:bg-[#ffffff23]'} `}>
 
-                            Features
+                            Projects
                         </Link>
                     </li>
-                    <li >
+                    {/* <li >
                         <Link to='/' className={`py-2 px-3.5 rounded-lg ${scroll ? ' hover:bg-[#57575723]' : 'text-white hover:bg-[#ffffff23]'} `}>
 
                             How it Works
@@ -137,7 +137,7 @@ const Header = () => {
                         <Link to='/' className={`py-2 px-3.5 rounded-lg ${scroll ? ' hover:bg-[#57575723]' : 'text-white hover:bg-[#ffffff23]'} `}>
                             FAQ
                         </Link>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
         </div>

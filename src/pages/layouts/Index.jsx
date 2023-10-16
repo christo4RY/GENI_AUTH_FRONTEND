@@ -94,15 +94,15 @@ const Index = () => {
                     <div className='flex flex-col justify-center  w-full'>
                         <div className=' flex justify-center mb-5'>
                             <div className='text-sm flex space-x-6 py-0.5 px-3 rounded-xl bg-[#ffffff23]'>
-                                <h6>MagicAI</h6>
-                                <ul className=' list-disc'><li className=' text-slate-300'> Unleash the Power of A</li></ul>
+                                <h6>GENIID</h6>
+                                <ul className=' list-disc'><li className=' text-slate-300'> All In One Platform</li></ul>
                             </div>
                         </div>
                         <h1
                         className='text-[3rem] sm:text-[4rem] lg:text-[5rem]'
                             style={{  display: 'inline-block', fontWeight: 900, fontFamily: 'Poppins', position: 'relative' }}
                         ><span>
-                                Ultimate AI
+                                GENI ID
                             </span>
                             <div
                             className=' sm:top-[80px] top-[50px]'
@@ -110,11 +110,9 @@ const Index = () => {
                             >
                                 <TypeAnimation
                                     sequence={[
-                                        'Generator',
+                                        'Authentication',
                                         2000,
-                                        'Assistant',
-                                        2000,
-                                        'Chatbot',
+                                        'Esignature',
                                         2000,
                                     ]}
                                     wrapper="span"
@@ -125,7 +123,7 @@ const Index = () => {
                             </div>
                         </h1>
                         <div className='mt-20 sm:mt-24 sm:px-0 px-2'>
-                            <h4 className='text-lg sm:text-xl lg:text-2xl text-slate-300'>All-in-one platform to generate AI content <br /> and start making money in minutes.</h4>
+                            <h4 className='text-lg sm:text-xl lg:text-2xl text-slate-300'>Simplify Access with GENI-ID <br /> "Your All-in-One Identity for a Secure and Seamless Experience"  </h4>
                         </div>
                         <div className='mt-10 flex w-full  justify-center'>
                             <div className='flex space-x-3 py-1.5 px-3 justify-center items-center rounded-full bg-[#ffffff23]'>
@@ -152,7 +150,7 @@ const Index = () => {
             {/* features */}
             <div className='mt-12 md:mt-24 relative'>
 
-                <h1 className='text-[2rem] sm:text-[2.5rem] lg:text-[3rem] text-center font-semibold font-[Poppins]'>The Future of AI.</h1>
+                <h1 className='text-[2rem] sm:text-[2.5rem] lg:text-[3rem] text-center font-semibold font-[Poppins]'>Projects of GENI.</h1>
                 <div className='w-[90%] mt-2 grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 md:gap-y-5 gap-y-5 lg:gap-y-8  justify-center mx-auto p-4 md:p-8 lg:p-10 '>
                     <div className=' w-[80%] futures'>
                         <div className='space-x-5 flex '>

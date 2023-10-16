@@ -1,6 +1,6 @@
 import React from "react";
 import AuthStepper from "../../components/auth/AuthStepper.jsx";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import RegisterFields from "../../components/auth/RegisterFields.jsx";
 import "./register.css"
 
@@ -12,7 +12,10 @@ const Register = () => {
     <div className="w-full">
       <div className="w-full flex flex-col md:flex-row">
         <div className="stepperBackground w-full md:w-[28%] md:h-screen space-y-24 p-5 px-9  bg-[#053B50]">
-          <h1 className="  text-3xl font-semibold">Auth</h1>
+          <div className="flex space-x-2 items-center">
+            <img src="/images/geni-esign-removebg-120x120.png" className="w-10" alt="" />
+            <h1 className="  text-3xl font-semibold uppercase">GENI</h1>
+          </div>
           <div>
             <AuthStepper />
           </div>
@@ -22,8 +25,8 @@ const Register = () => {
             <div className="w-[90%] mx-auto">
               <div className=" space-y-3 mb-8">
                 <img
+                  src="/images/geni-esign-removebg-120x120.png"
                   alt="svgImg"
-                  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIKdmlld0JveD0iMCAwIDE3MiAxNzIiCnN0eWxlPSIgZmlsbDojMjZlMDdmOyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJub256ZXJvIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWRhc2hhcnJheT0iIiBzdHJva2UtZGFzaG9mZnNldD0iMCIgZm9udC1mYW1pbHk9Im5vbmUiIGZvbnQtd2VpZ2h0PSJub25lIiBmb250LXNpemU9Im5vbmUiIHRleHQtYW5jaG9yPSJub25lIiBzdHlsZT0ibWl4LWJsZW5kLW1vZGU6IG5vcm1hbCI+PHBhdGggZD0iTTAsMTcydi0xNzJoMTcydjE3MnoiIGZpbGw9Im5vbmUiPjwvcGF0aD48ZyBmaWxsPSIjMWZiMTQxIj48cGF0aCBkPSJNMjEuNSwyMS41djEyOWg2NC41di0zMi4yNXYtNjQuNXYtMzIuMjV6TTg2LDUzLjc1YzAsMTcuNzgwNSAxNC40Njk1LDMyLjI1IDMyLjI1LDMyLjI1YzE3Ljc4MDUsMCAzMi4yNSwtMTQuNDY5NSAzMi4yNSwtMzIuMjVjMCwtMTcuNzgwNSAtMTQuNDY5NSwtMzIuMjUgLTMyLjI1LC0zMi4yNWMtMTcuNzgwNSwwIC0zMi4yNSwxNC40Njk1IC0zMi4yNSwzMi4yNXpNMTE4LjI1LDg2Yy0xNy43ODA1LDAgLTMyLjI1LDE0LjQ2OTUgLTMyLjI1LDMyLjI1YzAsMTcuNzgwNSAxNC40Njk1LDMyLjI1IDMyLjI1LDMyLjI1YzE3Ljc4MDUsMCAzMi4yNSwtMTQuNDY5NSAzMi4yNSwtMzIuMjVjMCwtMTcuNzgwNSAtMTQuNDY5NSwtMzIuMjUgLTMyLjI1LC0zMi4yNXoiPjwvcGF0aD48L2c+PC9nPjwvc3ZnPg=="
                 />
                 <h1 className=" text-3xl font-semibold">
                   {steps[activeStep].title}
@@ -31,7 +34,7 @@ const Register = () => {
                 <h3 className="">{steps[activeStep].description}</h3>
               </div>
               <div>
-                  <RegisterFields/>
+                <RegisterFields />
               </div>
             </div>
           </div>

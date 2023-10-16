@@ -23,7 +23,6 @@ const Projects = () => {
           navigation
         >
           {projects?.map((project, index) => {
-            console.log(project)
             return (
               <SwiperSlide key={index}>
                 <a href={project.project_url}>

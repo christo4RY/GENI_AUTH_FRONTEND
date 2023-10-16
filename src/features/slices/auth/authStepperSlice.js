@@ -7,14 +7,14 @@ const initialState = {
       title: "Your Personal Information",
       label: "Personal Information",
       description:
-        "Enter your personal information to get closed to companies.",
+        "Enter your personal information to get GENI Authentication ID.",
     },
     {
       step: "Step 2",
       title: "Information Detail",
       label: "Information Detail",
       description:
-        "Enter your personal information to get closed to companies.",
+        "Enter your personal information to get GENI Authentication ID.",
     },
   ],
   activeStep: 0,
