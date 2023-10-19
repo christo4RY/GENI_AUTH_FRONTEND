@@ -29,7 +29,7 @@ const Login = () => {
     const { data: res } = await getUser(data)
     if (res?.data) {
       toast.success(res.data.message)
-      dispatch(setCredentials({ id: res.data.id, token: res.data.token }))
+      dispatch(setCredentials({ id: res.data.id,email: res.data.email,username: res.data.username, token: res.data.token }))
       nav('/admin/projects')
     } else {
       toast.error("Incorrect username or password.")
@@ -72,7 +72,7 @@ const Login = () => {
             New to GENI?
           </h5>
           <div className="text-sm md:text-base">
-            <Link className=" text-blue-700 underline" to="/forgot-password">
+            <Link className=" text-blue-700 underline" to="/register">
               Create an account
             </Link>
           </div>

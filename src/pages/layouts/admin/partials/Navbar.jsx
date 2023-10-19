@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { CiSearch } from "react-icons/ci"
 import { BsFillLightningChargeFill } from 'react-icons/bs';
 import { TfiWorld } from "react-icons/tfi"
@@ -15,7 +15,7 @@ import {
 import { Menu, rem } from '@mantine/core';
 import { setDarkMode } from '../../../../features/slices/darkMode/darkModeSlice';
 import { setCredentials } from '../../../../features/slices/auth/authTokenSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useLogoutUserMutation } from '../../../../features/api/apiSlices/AuthApi';
 
 const Navbar = ({ sider, toggleSider, openSider, children }) => {
@@ -23,18 +23,25 @@ const Navbar = ({ sider, toggleSider, openSider, children }) => {
     const [logoutUser] = useLogoutUserMutation()
     const { theme: dark } = useSelector(state => state.darkMode)
     const nav = useNavigate()
+    const [auth, setAuth] = useState('');
+
+    const data = useSelector((state) => state.authToken)
+    useEffect(() => {
+        setAuth(data)
+    }, [])
     const logout = async () => {
         const data = await logoutUser()
-        if(data?.data){
-            if(data.data.error){
+        if (data?.data) {
+            if (data.data.error) {
                 toast.error('Something wrong!')
-            }else{
-                dispatch(setCredentials({ id: null, token: null }))
+            } else {
+                dispatch(setCredentials({ id: null, email: null, username: null, token: null }))
                 toast.success(data.data.msg)
                 nav('/login')
             }
         }
     }
+
     return (
         <div className='w-full '>
             <div className={`z-10 bg-slate-100 border-r dark:border-slate-700 dark:bg-[#1A1D23] dark:text-gray-100   duration-300 absolute top-0 transition-transform left-0 mt-16 py-4 w-full md:translate-x-[-120%] ${openSider ? ' translate-x-0' : ' translate-x-[-120%]'}`}>
@@ -68,16 +75,7 @@ const Navbar = ({ sider, toggleSider, openSider, children }) => {
                         <RiMenuFoldLine onClick={toggleSider} className={`text-[1.5rem] text-slate-600  ${openSider ? 'flex md:hidden' : 'hidden'}`} />
                     </div>
                     <div className='flex space-x-2 lg:space-x-4 items-center'>
-                        <button className='hidden dark:border-slate-700 lg:h-9 h-8 border rounded-full items-center shadow-sm hover:shadow-lg transition-all duration-200 py-0.5 px-4 md:flex'>
-                            <h4 className='text-sm xl:text-[0.925rem]'>Admin Panel</h4>
-                        </button>
-                        <button className='hidden dark:border-slate-700 lg:h-9 h-8 border rounded-full items-center shadow-sm hover:shadow-lg transition-all duration-200 py-0.5 px-4 md:flex'>
-                            <h4 className='text-sm xl:text-[0.925rem]'>No Active Subscription</h4>
-                        </button>
-                        <button className='hidden dark:border-slate-700 lg:h-9 h-8 border space-x-2 bg-[#330582] text-white rounded-full items-center shadow-sm hover:shadow-lg transition-all duration-200 py-0.5 px-4 md:flex'>
-                            <BsFillLightningChargeFill />
-                            <h4 className='text-sm xl:text-[0.925rem]'>Upgrade</h4>
-                        </button>
+
                         <div className='flex items-center space-x-4 ps-5 '>
                             <button className='md:h-9 h-8' onClick={() => dispatch(setDarkMode())}>
                                 <BsMoon className={`${dark ? 'hidden' : 'block'} text-[1.3rem] text-slate-400`} />
@@ -86,9 +84,7 @@ const Navbar = ({ sider, toggleSider, openSider, children }) => {
                             <button className='md:h-9 h-8'>
                                 <TfiWorld className='text-[1.3rem] text-slate-400' />
                             </button>
-                            <button className='md:h-9 h-8'>
-                                <BsFillLightningChargeFill className='text-[1.3rem] text-slate-400' />
-                            </button>
+
 
                             <Menu shadow="md" width={170} >
                                 <Menu.Target>
@@ -99,12 +95,14 @@ const Navbar = ({ sider, toggleSider, openSider, children }) => {
 
                                 <Menu.Dropdown className='dark:bg-[#1A1D23] dark:border-slate-700 dark:text-slate-100'>
                                     <div className='px-3 py-2 space-y-1'>
-                                        <h1 className=' text-slate-500 dark:text-slate-100 text-sm'>Admin</h1>
-                                        <h4 className=' text-slate-500 dark:text-slate-100 text-sm'>admin@gmail.com</h4>
+                                        <h1 className=' text-slate-500 dark:text-slate-100 text-sm'>{auth?.username}</h1>
+                                        <h4 className=' text-slate-500 dark:text-slate-100 text-sm'>{auth?.email}</h4>
                                     </div>
                                     <Menu.Divider />
                                     <Menu.Item className='dark:text-slate-100' leftSection={<IconSettings style={{ width: rem(16), height: rem(16) }} />}>
-                                        Setting
+                                        <Link to="/profile">
+                                            Settings
+                                        </Link>
                                     </Menu.Item>
                                     <Menu.Item onClick={logout} className='dark:text-slate-100' leftSection={<IconLogout style={{ width: rem(16), height: rem(16) }} />}>
                                         Logout

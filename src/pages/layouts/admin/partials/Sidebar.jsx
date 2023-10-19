@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { RxDashboard } from "react-icons/rx"
 import { AiOutlineProject } from "react-icons/ai"
 import { MdKeyboardArrowDown, MdKeyboardArrowLeft } from "react-icons/md";
 import { showSubMenu, sidebarToggle } from '../../../../utilities/sidebar';
 const Sidebar = () => {
-
     return (
         <div className={`w-0 md:w-[22%] lg:w-[18%] xl:w-[16%] sidebar `}>
             <div className='flex items-center space-x-2'>
@@ -17,10 +16,10 @@ const Sidebar = () => {
             </div>
             <ul className='sidebar-menu'>
                 <li className='sidebar-link '>
-                    <h5 className=' sidebar-lable'>user</h5>
+                    <h5 className=' sidebar-lable'>dashboard</h5>
                 </li>
                 <li className='sidebar-link'>
-                    <Link to='#' className='sidebar-link-item'>
+                    <Link to='/admin/projects' className='sidebar-link-item'>
                         <RxDashboard className='sidebar-link-icon' />
                         <h5>Dashboard</h5>
                     </Link>
@@ -35,7 +34,7 @@ const Sidebar = () => {
                     </div>
                     <ul className='sidebar-submenu-link'>
                         <li className='sidebar-submenu-link-item'>
-                            <Link to="#" className='w-full'>Projects</Link>
+                            <Link to="/admin/projects" className='w-full'>Projects</Link>
                         </li>
                         <li className='sidebar-submenu-link-item'>
                             <Link to="#" className='w-full'>Codes</Link>
@@ -55,7 +54,7 @@ const Sidebar = () => {
                     </div>
                     <ul className='sidebar-submenu-link'>
                         <li className='sidebar-submenu-link-item'>
-                            <Link to="#" className='w-full'>Settings</Link>
+                            <Link to="/profile" className='w-full'>Profile</Link>
                         </li>
                     </ul>
                 </li>

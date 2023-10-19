@@ -11,7 +11,7 @@ import {
 import { useLogoutUserMutation } from '../../../features/api/apiSlices/AuthApi';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCredentials } from '../../../features/slices/auth/authTokenSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -41,7 +41,9 @@ const Navbar = () => {
             <Menu.Dropdown>
               <Menu.Label>User</Menu.Label>
               <Menu.Item leftSection={<IconSettings style={{ width: rem(14), height: rem(14) }} />}>
-                Settings
+                <Link to="profile">
+                  Settings
+                </Link>
               </Menu.Item>
               <Menu.Item onClick={logout} leftSection={<IconLogout style={{ width: rem(14), height: rem(14) }} />}>
                 Logout

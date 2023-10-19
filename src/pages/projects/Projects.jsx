@@ -4,10 +4,17 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/navigation';
 import 'swiper/css';
 import "./Projects.css"
-import { useGetProjectsQuery } from '../../features/api/apiSlices/ProjectApi';
+import { useGetProjectsQuery, useGoToProjectMutation } from '../../features/api/apiSlices/ProjectApi';
 
 const Projects = () => {
   const { data: projects, isLoading } = useGetProjectsQuery();
+  const [project,{isLoading:projectLoading}] = useGoToProjectMutation()
+  const openProject = async  ({user_id,project_url}) => {
+    const {data} = await project({user_id,project_url})
+    if(data){
+      location.href = data.project_dashboard_url
+    }
+  }
   return (
     <div className='w-full'>
       <h4 className=' font-light text-sm text-slate-500'>Dashboard</h4>
@@ -25,8 +32,7 @@ const Projects = () => {
           {projects?.map((project, index) => {
             return (
               <SwiperSlide key={index}>
-                <a href={project.project_url}>
-                  <div className="p-4 h-40 bg-white dark:bg-[#1A1D23] dark:border-slate-700 dark:text-slate-100 dark:border flex rounded-lg relative overflow-hidden">
+                  <div onClick={()=>openProject(project)} className="p-4 h-40 bg-white dark:bg-[#1A1D23] dark:border-slate-700 dark:text-slate-100 dark:border flex rounded-lg relative overflow-hidden">
                     <div>
                       <h1 className=" text-xl font-semibold">{project.project_name}</h1>
                       <p className=" text-xs">{project.project_name}</p>
@@ -35,7 +41,6 @@ const Projects = () => {
                       <img src={project.project_logo} className="w-[10rem] " alt="" />
                     </div>
                   </div>
-                </a>
               </SwiperSlide>
             );
           })}

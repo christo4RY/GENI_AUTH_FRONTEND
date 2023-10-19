@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 import "react-phone-input-2/lib/style.css";
 import "./RegisterFields.css";
 import { useDispatch, useSelector } from "react-redux";
-
+import { toast } from 'react-toastify';
 import {
   handleNext,
   handleBack,
@@ -90,7 +90,8 @@ const RegisterFields = () => {
   const registerUser = async (data) => {
     const { data: response } = await setUser(data)
     if (response?.data?.token) {
-      dispatch(setCredentials({ id: response.data.id, token: response.data.token }))
+      dispatch(setCredentials({ id: response.data.id,email: response.data.email,username: response.data.username, token: response.data.token }))
+      toast.success(response.data.message)
       nav('/admin/projects')
     }
   }

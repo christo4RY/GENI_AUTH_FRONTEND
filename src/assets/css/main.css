@@ -84,4 +84,20 @@
   .show-submenu-hover {
     @apply block absolute top-0 pt-0.5 bg-slate-100 shadow-lg rounded-lg translate-x-[53%];
   }
+  .tab-link {
+    @apply flex space-x-4 items-center cursor-pointer py-1.5 px-2.5 relative text-slate-700 text-sm;
+  }
+  .tab-active {
+    @apply relative bg-orange-100/60 rounded-lg;
+  }
+  .tab-active::after {
+    content: "";
+    width: 4px;
+    height: 100%;
+    display: block;
+    right: 0;
+    position: absolute;
+    background-color: orange;
+    /* border-radius: 20%; */
+  }
 }

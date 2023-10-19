@@ -15,6 +15,7 @@ import RouteGuestGuard from "../components/auth/Guard/RouteGuestGuard";
 import Index from "../pages/layouts/Index";
 import ForgotPassword from "../pages/auth/ForgotPassword";
 import ResetPassword from "../pages/auth/ResetPassword";
+import Profile from "../pages/auth/Profile";
 
 const routes = createBrowserRouter(
   createRoutesFromElements(
@@ -44,6 +45,12 @@ const routes = createBrowserRouter(
         </RouteAuthGuard>}>
           <Route path="projects" element={<Projects />} />
           <Route path="auth-code" element={<AuthCode />} />
+        </Route>
+
+        <Route path="/profile" element={<RouteAuthGuard>
+          <AuthenticateLayout />
+        </RouteAuthGuard>}>
+          <Route index element={<Profile />} />
         </Route>
         {/* <Route path="/test" element={<AuthIndex/>}/> */}
       </Route>

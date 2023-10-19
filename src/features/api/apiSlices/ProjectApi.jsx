@@ -1,5 +1,5 @@
 import { MainApi } from "../MainApi";
-import { PROJECTS_URL } from "../constant/URLS";
+import { GOTOPROJECT_URL, PROJECTS_URL } from "../constant/URLS";
 
 export const ProjectApi = MainApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -10,7 +10,15 @@ export const ProjectApi = MainApi.injectEndpoints({
             }),
             providesTags: ['Project']
         }),
+        goToProject:builder.mutation({
+            query:({user_id,project_url})=>({
+                url:`${GOTOPROJECT_URL}/${user_id}`,
+                method:"POST",
+                body:{project_url}
+            }),
+            providesTags: ['Project']
+        })
     })
 })
 
-export const { useGetProjectsQuery} = ProjectApi
+export const { useGetProjectsQuery,useGoToProjectMutation} = ProjectApi
