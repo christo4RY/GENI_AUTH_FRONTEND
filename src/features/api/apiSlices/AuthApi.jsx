@@ -1,5 +1,5 @@
 import { MainApi } from "../MainApi";
-import { CHANGEPWD_URL, FORGOTPWD_URL, LOGIN_URL, LOGOUT_URL, REGISTER_URL, RESETPWD_URL, VERIFYCODE_URL } from "../constant/URLS"
+import { CHANGEPWD_URL, FORGOTPWD_URL, LOGIN_URL, LOGOUT_URL, REGISTER_URL, RESETPWD_URL, USERPROFILE_URL, VERIFYCODE_URL } from "../constant/URLS"
 
 
 export const AuthApi = MainApi.injectEndpoints({
@@ -20,12 +20,27 @@ export const AuthApi = MainApi.injectEndpoints({
             }),
             invalidatesTags: ['Auth']
         }),
+        getUserProfile:builder.query({
+            query:()=>({
+                url:USERPROFILE_URL,
+                method:'GET'
+            }),
+            providesTags:['Auth']
+        }),
         logoutUser: builder.mutation({
             query: () => ({
                 url: LOGOUT_URL,
                 method: "POST",
             }),
             invalidatesTags: ['Auth']
+        }),
+        updateProfile:builder.mutation({
+            query:(data)=>({
+                url:USERPROFILE_URL,
+                method:'PATCH',
+                body:data
+            }),
+            invalidatesTags:['Auth']
         }),
         userVerifyCode:builder.mutation({
             query: (data) => ({
@@ -62,4 +77,4 @@ export const AuthApi = MainApi.injectEndpoints({
     })
 })
 
-export const { useSetUserMutation,useGetUserMutation,useLogoutUserMutation,useUserVerifyCodeMutation,useForgotPasswordMutation,useResetPasswordMutation,useChangePasswordMutation} = AuthApi
+export const { useSetUserMutation,useGetUserMutation,useGetUserProfileQuery,useUpdateProfileMutation,useLogoutUserMutation,useUserVerifyCodeMutation,useForgotPasswordMutation,useResetPasswordMutation,useChangePasswordMutation} = AuthApi

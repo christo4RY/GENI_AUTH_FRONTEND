@@ -7,13 +7,14 @@ import TabLink from '../../components/TabLink';
 import TabPanel from '../../components/TabPanel';
 import ChangePassword from '../../components/ChangePassword';
 import UserInfo from '../../components/UserInfo';
+import { useGetUserProfileQuery } from '../../features/api/apiSlices/AuthApi';
 
 const Profile = () => {
     const [isActive, setActive] = useState("info")
-
+    const {data} = useGetUserProfileQuery()
     return (
         <div className='w-full flex p-5 space-x-5'>
-            <div className='w-[35%] md:w-[25%] lg:w-[20%] shadow-lg bg-white p-3 py-5 rounded-xl'>
+            <div className='w-[35%] md:w-[30%] dark:bg-[#1A1D23] dark:border dark:border-slate-700 lg:w-[22%] shadow-lg bg-white p-3 py-5 rounded-xl'>
                 <div>
                     <h2 className='text-xl md:text-2xl text-slate-700 font-semibold'>User Profile</h2>
                 </div>
@@ -28,8 +29,8 @@ const Profile = () => {
                     </Tab>
                 </div>
             </div>
-            <div className='w-[65%] md:w-[75%] lg:w-[80%] p-10 md:p-14 bg-white rounded-xl shadow-lg'>
-                <div className='w-full flex space-x-8 items-center'>
+            <div className='w-[65%] md:w-[70%] lg:w-[78%] p-10 md:p-14 bg-white  dark:border dark:bg-[#1A1D23] dark:border-slate-700  rounded-xl shadow-lg'>
+                <div className='w-full flex space-x-8 items-center '>
                     <div className=' relative  '>
                         <img src="https://i.pinimg.com/236x/c2/45/48/c24548fbd6817d9761ad1e004e0ba7b7.jpg" className='w-24 h-24 object-cover relative rounded-full shadow-lg  shadow-indigo-400' alt="" />
                         <div className=' bg-orange-500 top-16 absolute p-[0.30rem] left-[4.8rem] shadow-lg hover:ring-offset-1 hover:ring-orange-500 cursor-pointer hover:bg-orange-600 transition-all duration-300 hover:shadow-md shadow-orange-400 rounded-full'>
@@ -37,13 +38,13 @@ const Profile = () => {
                         </div>
                     </div>
                     <div>
-                        <h2 className='text-xl md:text-2xl text-slate-700 font-semibold'>Arkar 4RY</h2>
-                        <h5 className='text-slate-400 text-xs md:text-sm'>Yangon,Myanmar</h5>
+                        <h2 className='text-xl md:text-2xl text-slate-700 font-semibold'>{data?.userProfile.fullname}</h2>
+                        <h5 className='text-slate-400 text-xs md:text-sm'>{data?.userProfile?.userdetail?.country ? `${data?.userProfile?.userdetail?.city},${data?.userProfile?.userdetail?.country}`: 'Yangon,Myanmar'}</h5>
                     </div>
                 </div>
                 <div className='py-12'>
                     <TabPanel state='info' title="User Info" active={isActive}>
-                       <UserInfo/>
+                       <UserInfo user={data?.userProfile}/>
                     </TabPanel>
                     <TabPanel state='pwd' title="Change Password" active={isActive}>
                         <ChangePassword/>

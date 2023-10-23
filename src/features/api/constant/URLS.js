@@ -8,6 +8,7 @@ const PROJECTS_URL = "/api/projects";
 const VERIFYCODE_URL = "/api/v1/email-verify";
 const GOTOPROJECT_URL = "/api/gotoproject";
 const CHANGEPWD_URL = "/api/change-password";
+const USERPROFILE_URL = "/api/user-profile";
 //https://geniid.geni.technology
 export {
   BASE_URL,
@@ -15,6 +16,7 @@ export {
   LOGOUT_URL,
   RESETPWD_URL,
   FORGOTPWD_URL,
+  USERPROFILE_URL,
   VERIFYCODE_URL,
   LOGIN_URL,
   PROJECTS_URL,

@@ -28,7 +28,7 @@ const ChangePassword = () => {
     } 
 
     return (
-        <form onSubmit={form.onSubmit(submitPassword)} className=' grid grid-cols-1 w-[70%] md:w-[50%] gap-5'>
+        <form onSubmit={form.onSubmit(submitPassword)} className=' grid grid-cols-1 w-[70%]  gap-5'>
             <div>
                 <PasswordInput
                     label="Current Password"
